@@ -4,7 +4,7 @@
     "name": "Suero Amarillo",
     "price": "500",
     "description" : "Nuestro serum está hecho para la salud de tu piel. Tener un cutis perfecto ¡Ahora es posible!",
-    "image": "./assets/producto1.jpg",
+    "image": "../public/images/producto1.jpg",
     "stock": 500,
     "category": "Sueros"
   },
@@ -13,7 +13,7 @@
     "name": "Gotas rejuvenecimiento", 
     "price": 800,
     "description" : "Con nuestras gotas de muestra pura ¡Podrás rejuvencer!",
-    "image": "./assets/producto2.jpg",
+    "image": "../public/images/producto2.jpg",
     "stock": 230,
     "category": "Gotas"
   },
@@ -22,7 +22,7 @@
     "name": "Suero Rojo", 
     "price": 730,
     "description": "Nuestro suero carmesí es para dolencias, si tienes algun dolor recurrente, artritis, etc.",
-    "image": "./assets/producto3.jpg",
+    "image": "../public/images/producto3.jpg",
     "stock": 200,
     "category": "Sueros"
   },
@@ -31,7 +31,7 @@
     "name": "Kit tres pasos",
     "price": 5500,
     "description": "¡Tambien puedes llevar nuestro kit completo! Juventud, salud y una mente despejada ¡Pruebalo!",
-    "image": "./assets/producto4.jpg",
+    "image": "../public/images/producto4.jpg",
     "stock": 500,
     "category": "Gotas"
   },
@@ -40,7 +40,7 @@
     "name": "Aquaprom", 
     "price": 3500,
     "description": "Probá nuestro más reciente serum ¡Aquaprom! podrás limpiar tu cuerpo de toxinas.",
-    "image": "./assets/producto5.jpg",
+    "image": "../public/images/producto5.jpg",
     "stock": 400,
     "category": "Cremas"
   },
@@ -49,7 +49,7 @@
     "name": "Spray Curativo",
     "price": 13500,
     "description": "Nuestro mejor producto ahora en un nuevo empaque ¡El spray de primeros auxilios!",
-    "image": "./assets/producto6.jpg",
+    "image": "../public/images/producto6.jpg",
     "stock": 500,
     "category": "Sueros"
   },
@@ -58,7 +58,7 @@
     "name": "Suero Naranja", 
     "price": 8300,
     "description": "Nuestro suero naranja es para mejorar tus estados fisicos temporalmente ¡Pide una muestra gratis!",
-    "image": "./assets/producto7.jpg",
+    "image": "../public/images/producto7.jpg",
     "stock": 50,
     "category": "Sueros"
   },
@@ -67,7 +67,7 @@
     "name": "Kit de prueba", 
     "price": 7420,
     "description": "Puedes pedir el kit de prueba con una variada selección de nuestros productos más nuevos",
-    "image": "./assets/producto8.jpg",
+    "image": "../public/images/producto8.jpg",
     "stock": 700,
     "category": "Gotas"
   },
@@ -76,7 +76,7 @@
     "name": "Suero Uruboros",
     "price": 9543, 
     "description": "Esta es la versión 2.0 de nuestro suero carmesí, ideal para complementar con tratamientos médicos",
-    "image": "./assets/producto9.jpg",
+    "image": "../public/images/producto9.jpg",
     "stock": 150,
     "category": "Sueros"
   }	

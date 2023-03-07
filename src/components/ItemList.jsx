@@ -1,19 +1,19 @@
 import Item from "./Item"
 import { Container } from '@chakra-ui/react'
-const ItemList = ({ products }) => {
+const ItemList = ({ productos }) => {
   return (
     <>
       <Container maxW="container.md" className='main-catalogue'>
-        {products?.map((product)=>(
+        {productos?.map((producto)=>(
           <Item
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            image={product.image}
-            description={product.description}
-            price={product.price}
-            stock={product.stock}
-            category={product.category}
+            key={producto.id}
+            id={producto.id}
+            name={producto.name}
+            image={producto.image}
+            description={producto.description}
+            price={producto.price}
+            stock={producto.stock}
+            category={producto.category}
           />
         ))}
       </Container>   

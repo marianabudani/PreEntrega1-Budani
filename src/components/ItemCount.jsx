@@ -1,9 +1,11 @@
-import { useState } from "react";
-import { Text, ButtonGroup, IconButton, Tooltip, Center, } from "@chakra-ui/react";
+import { useContext, useState } from "react";
+import { Text, ButtonGroup, IconButton, Tooltip, Center, Button } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { CartContext } from '../contexts/ShoppingCartContext'
 
-const ItemCount = ({ stock }) => {
-  const [count, setCount] = useState(1);
+const ItemCount = ({ stock, id, price, name }) => {
+  const [ cart, setCart ] = useContext(CartContext)
+  const [ count, setCount ] = useState(1)
 
   const onAdd = () => {
     setCount(count + 1);
@@ -13,6 +15,22 @@ const ItemCount = ({ stock }) => {
     setCount(count - 1);
   };
 
+  const addCart = () => {
+    setCart((currItems) => {
+      const isItemFound = currItems.find((item) => item.id === id)
+      if (isItemFound){
+        return currItems.map((item) => {
+          if(item.id === id) {
+            return { ...item, quantity: item.quantity + count }
+          }else{
+            return item
+          }
+        })
+      }else{
+        return [...currItems, {id, quantity: count, price, name}]
+      }
+    })
+  }
   return (
     <>
       <ButtonGroup size="sm" isAttached variant="outline">
@@ -23,8 +41,10 @@ const ItemCount = ({ stock }) => {
         ) : (
           <IconButton icon={<MinusIcon />} onClick={onSubstract} />
         )}
-        <Center w="50px" h="30px">
-          <Text as="b">{count}</Text>
+        <Center w="125px" h="30px">
+          <Button onClick={() => addCart()} variant="solid" colorScheme="blue">            
+            Add to cart: {count}
+          </Button>
         </Center>
         {count < stock ? (
           <IconButton icon={<AddIcon />} onClick={onAdd} />

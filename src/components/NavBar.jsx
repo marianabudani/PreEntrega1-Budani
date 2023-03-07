@@ -1,21 +1,33 @@
 import { Flex, 
   Spacer, 
   Box, 
-  Center, 
   Container, 
   Heading, 
   Button, 
   Menu,
   MenuButton,
-  MenuList,
   MenuItem,
   Avatar,
  } from '@chakra-ui/react'
 import CartWidget from './CartWidget'
 import { Link } from 'react-router-dom'
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
 const NavBar = ({titulo}) => {
+  const [categorias, setCategorias] = useState([])
+  useEffect(()=>{
+    const database = getFirestore()
+    const categoriasCollection = collection(database, 'categorias')
+      getDocs(categoriasCollection).then((querySnapshot) => {
+        const categorias = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id:doc.id,
+        }))
+        setCategorias(categorias)
+      })
+  })
   return (
     <>
       <Container maxW='container.xxl' bg='red.700' color='white'>
@@ -38,11 +50,9 @@ const NavBar = ({titulo}) => {
                   background: "white",
                   color: "grey",
                 }} m="5" rightIcon={<ChevronDownIcon/>}>Categories</MenuButton>
-              <MenuList className="menu-list">
-                <Link to={`/category/${"Gotas"}`}><MenuItem>Gotas</MenuItem></Link>
-                <Link to={`/category/${"Sueros"}`}><MenuItem>Sueros</MenuItem></Link>
-                <Link to={`/category/${"Cremas"}`}><MenuItem>Cremas</MenuItem></Link>
-              </MenuList>
+              {categorias.map((cat)=>{
+                <Link to={`/category/${cat}`}><MenuItem>{cat.name}</MenuItem></Link>
+              })}
             </Menu>
           </Box>
           <Spacer />

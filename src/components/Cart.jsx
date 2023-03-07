@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { Button, Container, Center, Heading, Card, CardHeader, CardBody, CardFooter, Text, Spinner } from "@chakra-ui/react";
 import { CartContext } from "../contexts/ShoppingCartContext";
 import SendOrder from "./SendOrder";
+import { useParams } from 'react-router-dom';
 
 const Cart = () => {
   const [cart, setCart] = useContext(CartContext)
@@ -19,7 +20,7 @@ const Cart = () => {
               </CardHeader>
               <CardBody>
                 <Text as="b">Quantity: {item.quantity}</Text>
-                <Text>Price: U$D {item.price}</Text>
+                <Text>Price: $ {item.price}</Text>
               </CardBody>
               <CardFooter>
                 <Button

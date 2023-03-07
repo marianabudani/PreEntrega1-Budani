@@ -10,20 +10,14 @@ const SendOrder = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if(name === '' || email === ''){
-      /*return(
-        <Alert status='success' variant='left-accent'>
-          <AlertIcon />
-          Data uploaded to the server. Fire on!
-        </Alert>
-      )*/
-      alert('Complete todos los datos')
+      console.log('Complete todos los campos')
     }else{
       addDoc(ordersCollection, order).then(({id}) => setOrderId(id))
     }
     setEmail('')
   }
   const database = getFirestore()
-  const ordersCollection = collection(database, "orden")
+  const ordersCollection = collection(database, 'orders')
   const order = { name, email }
   
   return (

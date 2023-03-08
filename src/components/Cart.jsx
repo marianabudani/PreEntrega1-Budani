@@ -1,8 +1,7 @@
 import { useState, useContext } from 'react'
-import { Button, Container, Center, Heading, Card, CardHeader, CardBody, CardFooter, Text, Spinner } from "@chakra-ui/react";
+import { Button, Container, Heading, Card, CardHeader, CardBody, CardFooter, Text, Spinner } from "@chakra-ui/react";
 import { CartContext } from "../contexts/ShoppingCartContext";
 import SendOrder from "./SendOrder";
-import { useParams } from 'react-router-dom';
 
 const Cart = () => {
   const [cart, setCart] = useContext(CartContext)
@@ -25,7 +24,7 @@ const Cart = () => {
               <CardFooter>
                 <Button
                   colorScheme="red"
-                  onClick={() => console.log("Eliminando")}
+                  onClick={() => alert("Eliminando")}
                 >
                  Delete
                 </Button>

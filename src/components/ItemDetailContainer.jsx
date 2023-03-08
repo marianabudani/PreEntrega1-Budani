@@ -1,5 +1,4 @@
 import ItemDetail from "./ItemDetail"
-//import Products from "../productos.json"
 import { useState, useEffect } from "react"
 import { getFirestore, collection, getDocs } from "firebase/firestore"
 

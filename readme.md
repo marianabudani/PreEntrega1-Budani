@@ -57,3 +57,5 @@ Esta es una descripción de la estructura de carpetas del proyecto.
 ## Listo 🗃️
 
 Ahora solo necesitas hacer `npm run dev` y abrir en tu navegador la ruta que vite configuró [localhost](http://127.0.0.1:5173/)
+
+![Umbrella-e-commerce-Google-Chrome-2023-02-10-23-15-12](https://user-images.githubusercontent.com/21029510/218235562-ae86e086-ed83-45dc-9062-199a2e99d134.gif)

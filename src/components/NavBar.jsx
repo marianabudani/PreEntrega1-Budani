@@ -1,16 +1,4 @@
-import { Flex, 
-  Spacer, 
-  Box, 
-  Center, 
-  Container, 
-  Heading, 
-  Button, 
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Avatar,
- } from '@chakra-ui/react'
+import { Flex, Spacer, Box, Container, Heading, Button, Menu, MenuButton, MenuList, MenuItem, Avatar, } from '@chakra-ui/react'
 import CartWidget from './CartWidget'
 import { Link } from 'react-router-dom'
 import { ChevronDownIcon } from "@chakra-ui/icons";

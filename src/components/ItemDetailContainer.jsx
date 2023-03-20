@@ -7,9 +7,7 @@ const itemDetailContainer = () => {
       if (Products.length === 0) {
         reject(new Error("No hay productos"))
       }
-      setTimeout(()=>{
-        resolve(Products)
-      }, 2000)
+      resolve(Products)
     })
   }
   async function fetchProductos() {

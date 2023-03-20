@@ -1,11 +1,10 @@
-import React from 'react'
 import { Card, Heading, CardBody, Text, CardFooter, Button, Center, Stack, Image, Divider } from '@chakra-ui/react'
 import { Link } from "react-router-dom"
 
 const Item = ({id, name, stock, category, image}) => {  
   return (
     <div>
-      <div key={id}>
+      <div key={id} h="200" w="auto">
         <Center p="1rem">
           <Card align='center' className='card-main'>
             <CardBody>

@@ -1,41 +1,44 @@
 import Products from "../productos.json"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const ItemListContainer = () => {
   const { category } = useParams()
-  console.log(category)
 
   const getProducts = () => {
     return new Promise((resolve, reject)=>{
       if(Products.length === 0){
         reject(new Error("No hay productos"))
       }
-      setTimeout(()=>{
-        resolve(Products)
-      }, 2000)
+      resolve(Products)
     })
   }
+  const [product, setProduct] = useState([])
+  useEffect(() => {
+    getProducts().then((product) => setProduct(product))
+  }, [])
+  console.log('Hola ', product);
+  /*
   async function fetchProducts() {
     try {
       const productosFetch = await getProducts()
-      console.log(productosFetch)
     } catch (error) {
       console.log(error)
     }
   }
-  fetchProducts()
+  fetchProducts()*/
 
   if(category === undefined){
     return(
-      <div>
+      <div w="400">
         <ItemList products={Products} />
       </div>
     )
   }else{
     const catFilter = Products.filter((product) => product.category === category)
     return(
-      <div>
+      <div w="400">
         { catFilter ? < ItemList products={catFilter} /> : < ItemList products={Products} /> }
       </div>
     )

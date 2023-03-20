@@ -4,7 +4,8 @@ import ItemCount from "./ItemCount"
 
 const ItemDetail = ({ products }) => {
   const { id } = useParams()
-  const productFilter = products.filter((product) => product.id == id)
+  const productFilter = products.filter((product) => product.id === id)
+  console.log(productFilter, " ", products);
   return (
     <>
       {productFilter.map((product) => (

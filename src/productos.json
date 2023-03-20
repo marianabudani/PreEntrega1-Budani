@@ -6,7 +6,7 @@
     "description" : "Nuestro serum está hecho para la salud de tu piel. Tener un cutis perfecto ¡Ahora es posible!",
     "image": "../images/producto1.jpg",
     "stock": 5,
-    "category": "Sueros"
+    "category": "sueros"
   },
   { 
     "id": "1",

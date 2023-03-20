@@ -4,6 +4,21 @@ import { Link } from 'react-router-dom'
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 const NavBar = ({titulo}) => {
+  // useEffect(()=>{
+  //   const database = getFirestore()
+  //   const categoriasCollection = collection(database, 'categorias')
+  //     getDocs(categoriasCollection).then((querySnapshot) => {
+  //       const categorias = querySnapshot.docs.map((doc) => ({
+  //         ...doc.data(),
+  //         id:doc.id,
+  //       }))
+  //       setCategorias(categorias)
+  //     })
+  // }, [])
+  const gotas = 'Gotas'
+  const sueros = 'Sueros'
+  const cremas = 'Cremas'
+
   return (
     <>
       <Container maxW='container.xxl' bg='red.700' color='white'>
@@ -18,18 +33,21 @@ const NavBar = ({titulo}) => {
           <Box>
             <Menu>
               <Link to={"/catalogue"}>
-                <MenuButton as={Button} size="lg" variant="outline" colorScheme="teal" m="5">Catalogue</MenuButton>
+                <MenuButton as={Button} size="lg" variant="outline" _hover={{
+                  background: "grey",
+                  color: "black",
+                }}m="5">Catalogue</MenuButton>
               </Link>
             </Menu>
             <Menu>
-              <MenuButton as={Button} size="lg" variant="outline" colorScheme="teal"  _hover={{
-                  background: "white",
-                  color: "grey",
+              <MenuButton as={Button} size="lg" variant="outline" _hover={{
+                  background: "grey",
+                  color: "black",
                 }} m="5" rightIcon={<ChevronDownIcon/>}>Categories</MenuButton>
-              <MenuList className="menu-list">
-                <Link to={`/category/${"Gotas"}`}><MenuItem>Gotas</MenuItem></Link>
-                <Link to={`/category/${"Sueros"}`}><MenuItem>Sueros</MenuItem></Link>
-                <Link to={`/category/${"Cremas"}`}><MenuItem>Cremas</MenuItem></Link>
+              <MenuList color="black" className="menu-list">
+                <Link to={`/category/${gotas}`}><MenuItem>Gotas</MenuItem></Link>
+                <Link to={`/category/${sueros}`}><MenuItem>Sueros</MenuItem></Link>
+                <Link to={`/category/${cremas}`}><MenuItem>Cremas</MenuItem></Link>
               </MenuList>
             </Menu>
           </Box>

@@ -1,13 +1,14 @@
 import { Center, Card, CardBody, Image, Stack, Heading, Text, Button, CardFooter, Divider, Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react"
 import { useParams, useNavigate } from "react-router-dom"
 import ItemCount from "./ItemCount"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const ItemDetail = ({ products }) => {
   const { id } = useParams()
   const navigateTo = useNavigate()
   const productFilter = products.filter((product) => product.id === id)
 
+  const [countDown, setCountDown ] = useState(3)
   if (productFilter.length != 0) {
     return (
       <>
@@ -41,9 +42,17 @@ const ItemDetail = ({ products }) => {
       </>
     )
   }else {
-    setTimeout(() => {
-      navigateTo('/catalogue')
-    }, 3000);
+    useEffect(() => {
+      const intervalId = setInterval(()=>{
+        setCountDown(countDown => countDown - 1)
+      }, 1000)
+      return () => { clearInterval(intervalId) }
+    }, [])
+    useEffect(() => {
+      if(countDown === 0){
+        navigateTo('/catalogue')
+      }
+    }, [countDown, navigateTo])
     return(
       <>
       <Alert status='warning' variant='subtle' flexDirection='column' alignItems='center'
@@ -55,7 +64,7 @@ const ItemDetail = ({ products }) => {
           Error!
         </AlertTitle>
         <AlertDescription maxWidth='sm'>
-          It seems that your search returned no results. You will be redirected to the catalog shortly...
+          It seems that your search returned no results. You will be redirected to the catalogue in {countDown} ...
         </AlertDescription>
       </Alert>
       </>

@@ -18,7 +18,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     getProducts().then((product) => setProduct(product))
   }, [])
-  console.log('Hola ', product);
+
   /*
   async function fetchProducts() {
     try {

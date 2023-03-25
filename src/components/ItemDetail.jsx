@@ -23,7 +23,7 @@ const ItemDetail = ({ productos }) => {
   function onAdd(productos) {
       addToCart(productos, stock)
   }
-  
+  console.log(productos.id)
   const productoFilter = productos.filter((producto) => producto.id == id)
   if (productoFilter.length != 0){
     return (

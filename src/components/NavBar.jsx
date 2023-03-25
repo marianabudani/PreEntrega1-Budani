@@ -8,16 +8,17 @@ import { Flex,
   MenuButton,
   MenuItem,
   Avatar,
+  MenuList
  } from '@chakra-ui/react'
 import CartWidget from './CartWidget'
 import { Link } from 'react-router-dom'
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+//import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 const NavBar = ({titulo}) => {
   const [categorias, setCategorias] = useState([])
-  useEffect(()=>{
+  /*useEffect(()=>{
     const database = getFirestore()
     const categoriasCollection = collection(database, 'categorias')
       getDocs(categoriasCollection).then((querySnapshot) => {
@@ -27,7 +28,10 @@ const NavBar = ({titulo}) => {
         }))
         setCategorias(categorias)
       })
-  })
+  })*/
+  const gotas = 'Gotas'
+  const sueros = 'Sueros'
+  const cremas = 'Cremas'
   return (
     <>
       <Container maxW='container.xxl' bg='red.700' color='white'>
@@ -42,17 +46,25 @@ const NavBar = ({titulo}) => {
           <Box>
             <Menu>
               <Link to={"/catalogue"}>
-                <MenuButton as={Button} size="lg" variant="outline" colorScheme="teal" m="5">Catalogue</MenuButton>
+                <MenuButton as={Button} size="lg" variant="outline" _hover={{
+                  background: "grey",
+                  color: "black",
+                  }} m="5">Catalogue</MenuButton>
               </Link>
             </Menu>
             <Menu>
-              <MenuButton as={Button} size="lg" variant="outline" colorScheme="teal"  _hover={{
-                  background: "white",
-                  color: "grey",
+              <MenuButton as={Button} ssize="lg" variant="outline" _hover={{
+                  background: "grey",
+                  color: "black",
                 }} m="5" rightIcon={<ChevronDownIcon/>}>Categories</MenuButton>
-              {categorias.map((cat)=>{
+               <MenuList color="black" className="menu-list">
+                <Link to={`/category/${gotas}`}><MenuItem>Gotas</MenuItem></Link>
+                <Link to={`/category/${sueros}`}><MenuItem>Sueros</MenuItem></Link>
+                <Link to={`/category/${cremas}`}><MenuItem>Cremas</MenuItem></Link>
+              </MenuList>
+              {/*{categorias.map((cat)=>{
                 <Link to={`/category/${cat}`}><MenuItem>{cat.name}</MenuItem></Link>
-              })}
+              })}*/}
             </Menu>
           </Box>
           <Spacer />

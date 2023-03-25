@@ -1,53 +1,25 @@
-import { useContext, useState } from "react";
-import { Text, ButtonGroup, IconButton, Tooltip, Center, Button } from "@chakra-ui/react";
+import { ButtonGroup, IconButton, Tooltip, Center, Text } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { CartContext } from '../contexts/ShoppingCartContext'
 
-const ItemCount = ({ stock, id, price, name }) => {
-  const [ cart, setCart ] = useContext(CartContext)
-  const [ count, setCount ] = useState(1)
+const ItemCount = ({ stockProd, stock, setStock }) => {
+  const sumar = () => stock <= stockProd -1 ? setStock(stock + 1) : alert("Out of stock") 
+  const restar = () => stock > 0 ? setStock(stock - 1) : alert("No stock") 
 
-  const onAdd = () => {
-    setCount(count + 1);
-  };
-
-  const onSubstract = () => {
-    setCount(count - 1);
-  };
-
-  const addCart = () => {
-    setCart((currItems) => {
-      const isItemFound = currItems.find((item) => item.id === id)
-      if (isItemFound){
-        return currItems.map((item) => {
-          if(item.id === id) {
-            return { ...item, quantity: item.quantity + count }
-          }else{
-            return item
-          }
-        })
-      }else{
-        return [...currItems, {id, quantity: count, price, name}]
-      }
-    })
-  }
   return (
     <>
       <ButtonGroup size="sm" isAttached variant="outline">
-        {count < 1 ? (
+        {stock < 1 ? (
           <Tooltip label="minimum stock reached" placement="bottom">
             <IconButton icon={<MinusIcon />} isDisabled />
           </Tooltip>
         ) : (
-          <IconButton icon={<MinusIcon />} onClick={onSubstract} />
+          <IconButton icon={<MinusIcon />} onClick={restar} />
         )}
         <Center w="125px" h="30px">
-          <Button onClick={() => addCart()} variant="solid" colorScheme="blue">            
-            Add to cart: {count}
-          </Button>
+          <Text>Stock: {stock}</Text>
         </Center>
-        {count < stock ? (
-          <IconButton icon={<AddIcon />} onClick={onAdd} />
+        {stock < stock ? (
+          <IconButton icon={<AddIcon />} onClick={sumar} />
         ) : (
           <Tooltip label="stock limit reached" placement="bottom">
             <IconButton icon={<AddIcon />} isDisabled />

@@ -1,13 +1,25 @@
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom";
-//import Products from "../productos.json"
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import Products from "../productos.json"
+//import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import { Flex } from "@chakra-ui/react";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
   const { category } = useParams()
-  useEffect(() => {
+  const getProductos = () => {
+    return new Promise((resolve, reject)=>{
+      if (Products.length === 0){
+        reject(new Error("Products not found"))
+      }
+      resolve(Products)
+    })
+  }
+  useEffect(()=>{
+    getProductos().then((product)=> setProductos(product))
+  }, [])
+ /* useEffect(() => {
     const database = getFirestore()
     const productosCollection = collection(database, 'productos')
 
@@ -18,7 +30,7 @@ const ItemListContainer = () => {
       }))
       setProductos(productos)
     })
-  },[])
+  },[])*/
   
   const catFilter = productos.filter((producto) => producto.category === category)
   return(

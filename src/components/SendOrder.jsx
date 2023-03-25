@@ -1,14 +1,18 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Alert, AlertIcon, Button, Center, Container, FormControl, FormLabel, Heading, Input, Text } from '@chakra-ui/react'
 import {collection, getFirestore, addDoc} from 'firebase/firestore'
+import { CartContext } from '../contexts/ShoppingCartContext'
 
 const SendOrder = () => {
   const [orderId, setOrderId] = useState(null)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [total, setTotal] = useState()
+  const [cart] = useContext(CartContext)
   const database = getFirestore()
   const ordersCollection = collection(database, 'orders')
-  const order = { name, email }
+  const order = { name, email, cart, total }
+  console.log(cart)
   let alert = false
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -19,36 +23,8 @@ const SendOrder = () => {
     }
     setEmail('')
     setName('')
+    setTotal()
   }
-function CompExample() {
-  const {
-    isOpen: isVisible,
-    onClose,
-    onOpen,
-  } = useDisclosure({ defaultIsOpen: true })
-
-  return isVisible ? (
-    <Alert status='success'>
-      <AlertIcon />
-      <Box>
-        <AlertTitle>Success!</AlertTitle>
-        <AlertDescription>
-          Your application has been received. We will review your application
-          and respond within the next 48 hours.
-        </AlertDescription>
-      </Box>
-      <CloseButton
-        alignSelf='flex-start'
-        position='relative'
-        right={-1}
-        top={-1}
-        onClick={onClose}
-      />
-    </Alert>
-  ) : (
-    <Button onClick={onOpen}>Show Alert</Button>
-  )
-}
   if (alert != true) {
     return (
       <div>

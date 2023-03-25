@@ -1,8 +1,9 @@
 import Item from "./Item"
-import { Container } from '@chakra-ui/react'
+import { Container, Flex } from '@chakra-ui/react'
 const ItemList = ({ productos }) => {
   return (
     <>
+    <Flex minWidth='max-content' alignItems='center' gap='2'>
       <Container maxW="container.md" className='main-catalogue'>
         {productos?.map((producto)=>(
           <Item
@@ -16,7 +17,8 @@ const ItemList = ({ productos }) => {
             category={producto.category}
           />
         ))}
-      </Container>   
+      </Container>  
+      </Flex> 
     </>
   )
 }
